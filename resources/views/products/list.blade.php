@@ -90,7 +90,7 @@
   <div class="container">
     <h2>Product List</h2>
     <div class="add-button">
-      <a href="product_form.html">Add Product</a>
+      <a href="{{ route('products.create') }}">Add Product</a>
     </div>
     <table>
       <thead>
@@ -106,7 +106,13 @@
         <tr>
           <td>{{ $product->name }}</td>
           <td>${{ $product-> price }}</td>
-          <td>Tag 1</td>
+          <td>
+            <ul>
+              @foreach($product->tags as $tag)
+                <li>{{ $tag->name }}</li>
+              @endforeach
+            </ul>
+          </td>
           <td class="actions">
             <button onclick="location.href='product_form.html'">Edit</button>
             <button class="delete">Delete</button>
